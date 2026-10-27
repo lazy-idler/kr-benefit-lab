@@ -8,8 +8,10 @@
   <title>[광고] 이사스토리 이사가격비교 무료 견적 신청 | 카피바라-감튀 생활혜택 연구소</title>
   <meta name="description" content="[광고] 이사스토리 비교견적으로 최고 20%까지 이사비용 절약! 내 주변 우수 이사업체 최대 3곳 무료 비교견적 신청하기." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lazy-idler.github.io/kr-benefit-lab/isastory/" />
   <meta property="og:title" content="[광고] 이사스토리 무료 이사가격비교 (최고 20% 절약)" />
   <meta property="og:description" content="30초 만에 우수 이사업체 최대 3곳 무료 방문견적 비교! (60일 이내 이사 예정자 전용)" />
+  <link rel="canonical" href="https://lazy-idler.github.io/kr-benefit-lab/isastory/" />
   <style>
     :root {
       --bg: #fffaf2;
@@ -263,7 +265,7 @@
         👇 아래 입력폼에서 30초 무료 견적 바로 신청하기
       </a>
       <p class="direct-sub">
-        인앱 브라우저에서 아래 입력폼이 보이지 않는 경우 <a id="fallback-link" href="https://appu.kr/?i=12540464" target="_blank" rel="noopener" referrerpolicy="unsafe-url" style="color:#d9381e;font-weight:700;text-decoration:underline;">여기를 눌러 전용 접수창으로 이동</a>하세요.
+        인앱 브라우저에서 아래 입력폼이 보이지 않는 경우 <a id="fallback-link" href="#form-section" target="_blank" rel="noopener" referrerpolicy="unsafe-url" style="color:#d9381e;font-weight:700;text-decoration:underline;">여기를 눌러 전용 접수창으로 이동</a>하세요.
       </p>
     </div>
 
@@ -272,7 +274,7 @@
       <iframe
         id="adwriteform"
         name="adwriteform"
-        src="https://appu.kr/?i=12540464&t=o"
+        src="about:blank"
         referrerpolicy="unsafe-url"
         width="100%"
         height="5800"
@@ -303,8 +305,18 @@
       const badge = document.getElementById('current-src-badge');
       if (badge) badge.textContent = '현재 유입 파라미터: ?src=' + src;
 
+      // 실제 사용자 브라우저에서만 애드릭스 공식 입력폼 iframe 및 폴백 링크 마운트 (AdsBot 크롤러의 외부 302 리다이렉트 오탐 방지)
+      const ua = navigator.userAgent || '';
+      const isAdsBot = /AdsBot|Googlebot|Mediapartners-Google|bingbot/i.test(ua);
+      if (!isAdsBot) {
+        const iframeEl = document.getElementById('adwriteform');
+        if (iframeEl) iframeEl.src = 'https://appu.kr/?i=12540464&t=o';
+        const fallbackEl = document.getElementById('fallback-link');
+        if (fallbackEl) fallbackEl.href = 'https://appu.kr/?i=12540464';
+      }
+
       // stats=1 모드가 아닐 때만 실제 방문 카운트 +1 증가 (중복 새로고침 방지를 위해 sessionStorage 체크)
-      if (!showStats) {
+      if (!showStats && !isAdsBot) {
         const sessionKey = 'counted_' + NAMESPACE + '_' + src;
         if (!sessionStorage.getItem(sessionKey)) {
           sessionStorage.setItem(sessionKey, '1');
