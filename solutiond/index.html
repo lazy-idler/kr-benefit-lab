@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="referrer" content="unsafe-url" />
+  <title>[광고] 솔루션디 자동차 장기렌트 & 오토리스 AI 비교견적 | 카피바라-감튀</title>
+  <meta name="description" content="[광고] 영업 전화 없이 AI로 전국 30개 금융사 신차 장기렌트·리스 견적 비교하고 출고 사은품 혜택까지! (만 26세 이상 전용)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="[광고] 솔루션디 신차 장기렌트·리스 AI 30초 비교견적 (만 26세 이상)" />
+  <meta property="og:description" content="개인정보·영업전화 부담 없이 AI로 30개 금융사 월납금 먼저 비교! 출고 사은품 증정(출고 시기별 상이)" />
+  <meta property="og:image" content="https://img.tenping.kr/Content/Upload/Content/2026100118010001_Con_20261001182606_1.png" />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --primary: #1d4ed8;
+      --primary-dark: #1e3a8a;
+      --accent: #facc15;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .ftc-banner {
+      background: #0f172a;
+      color: #f8fafc;
+      font-size: 13px;
+      padding: 10px 14px;
+      text-align: center;
+      font-weight: 600;
+      border-bottom: 2px solid var(--accent);
+    }
+    .ftc-banner span {
+      color: var(--accent);
+      font-weight: 800;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 16px 12px 44px;
+    }
+    /* 실시간 6대 플랫폼 유입 카운터 대시보드 (?stats=1 접속 또는 푸터 버튼 클릭 시 노출) */
+    #stats-panel {
+      display: none;
+      background: #0f172a;
+      color: #f8fafc;
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 16px;
+      border: 2px solid #38bdf8;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    }
+    #stats-panel h2 {
+      font-size: 15px;
+      color: #38bdf8;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+      gap: 8px;
+    }
+    .stat-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 10px 6px;
+      text-align: center;
+    }
+    .stat-card .label {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+    .stat-card .val {
+      font-size: 19px;
+      font-weight: 800;
+      color: #facc15;
+    }
+    .header-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 20px 16px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07);
+      border: 2px solid #bfdbfe;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    .header-card h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+      word-break: keep-all;
+    }
+    .header-card p.sub {
+      font-size: 14px;
+      color: #334155;
+      margin-bottom: 14px;
+      word-break: keep-all;
+    }
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 17px;
+      padding: 15px 18px;
+      border-radius: 12px;
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.3);
+      margin: 12px 0;
+      text-align: center;
+    }
+    .cta-btn span.highlight {
+      color: #fde047;
+    }
+    .notice-box {
+      background: #eff6ff;
+      border: 1px solid #93c5fd;
+      border-radius: 12px;
+      padding: 14px;
+      text-align: left;
+      font-size: 13px;
+      color: #1e3a8a;
+      margin-top: 12px;
+    }
+    .notice-box ul {
+      padding-left: 18px;
+      margin-top: 6px;
+    }
+    .notice-box li {
+      margin-bottom: 5px;
+    }
+    .creative-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .creative-gallery a {
+      display: block;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+    .creative-gallery img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .stats-toggle {
+      display: inline-block;
+      margin-top: 6px;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 11px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- 공정위 2024.12.01 개정 지침 & 텐핑 의무 고지 준수: 최상단 대가성 문구 고정 -->
+  <div class="ftc-banner">
+    <span>[광고]</span> 이 페이지(포스팅)는 텐핑(Tenping) 소문내기 활동을하면서 해당 광고업체로부터 경제적 대가(수수료/포인트)를 지급받기로 하였음을 명시합니다.
+  </div>
+
+  <div class="container">
+    <!-- 6대 플랫폼 유입 카운터 패널 (?stats=1 접속 시 또는 하단 버튼 클릭 시 표시) -->
+    <div id="stats-panel">
+      <h2>
+        <span>📊 플랫폼별 실시간 유입 카운터 (solutiond)</span>
+        <span id="current-src-badge" style="font-size:12px;background:#334155;padding:3px 8px;border-radius:6px;color:#e2e8f0;"></span>
+      </h2>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="label">YouTube (yt)</div><div class="val" id="cnt-yt">-</div></div>
+        <div class="stat-card"><div class="label">X / 트위터 (x)</div><div class="val" id="cnt-x">-</div></div>
+        <div class="stat-card"><div class="label">Threads (th)</div><div class="val" id="cnt-th">-</div></div>
+        <div class="stat-card"><div class="label">Instagram (ig)</div><div class="val" id="cnt-ig">-</div></div>
+        <div class="stat-card"><div class="label">Facebook (fb)</div><div class="val" id="cnt-fb">-</div></div>
+        <div class="stat-card"><div class="label">Google Ads (gads)</div><div class="val" id="cnt-gads">-</div></div>
+        <div class="stat-card"><div class="label">직접/기타 (direct)</div><div class="val" id="cnt-direct">-</div></div>
+        <div class="stat-card" style="border-color:#facc15;"><div class="label">총 누적 유입</div><div class="val" id="cnt-total">-</div></div>
+      </div>
+    </div>
+
+    <div class="header-card">
+      <span class="badge">솔루션디 오토모빌 공식 AI 견적 비교</span>
+      <h1>AI로 신차 장기렌트·리스 견적 비교하고 상담부터 출고까지!</h1>
+      <p class="sub">개인정보 입력 없이 · 영업 전화 부담 없이 전국 30개 금융사 월납금 먼저 비교</p>
+
+      <a class="cta-btn" href="https://iryan.kr/t8g80y76dh" referrerpolicy="unsafe-url">
+        🤖 <span class="highlight">영업전화 없는 AI 30초 비교견적</span> & 무료 상담 신청하기 →
+      </a>
+
+      <div class="notice-box">
+        <strong>📌 견적 비교 및 무료 상담 신청 전 필수 안내</strong>
+        <ul>
+          <li><strong>신청 가능 대상:</strong> <strong>[만 26세 이상 내국인 성인]</strong> 전용 (만 26세 미만 및 외국인은 상담·승인 대상에서 제외됩니다.)</li>
+          <li><strong>소비자 혜택:</strong> <strong>출고 사은품 증정 (※ 출고 시기별 상이)</strong> · 블랙박스 · 썬팅 · 전국 탁송 지원</li>
+          <li><strong>견적 유의사항:</strong> ※ 희망 차종, 이용 기간, 보증금/선납금 조건 및 개인 신용도에 따라 실제 월 대여료·리스료 견적이 상이할 수 있습니다.</li>
+          <li><strong>상담 접수 항목:</strong> 이름, 연락처, 희망 차종(국산/수입 신차 등), 구매 방식(신차 장기렌트 / 무보증 장기렌트 / 법인 / 오토리스), 희망 초기 지원금</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 텐핑 공식 홍보 크리에이티브 카드 (클릭 시 공식 AI 견적 & 상담 페이지로 직행) -->
+    <div class="creative-gallery">
+      <a href="https://iryan.kr/t8g80y76dh" referrerpolicy="unsafe-url">
+        <img src="https://img.tenping.kr/Content/Upload/Content/2026100118010001_Con_20261001182606_1.png" alt="솔루션디 자동차 장기렌트 & 리스 AI 비교견적 안내 1" loading="eager" />
+      </a>
+      <a href="https://iryan.kr/t8g80y76dh" referrerpolicy="unsafe-url">
+        <img src="https://img.tenping.kr/Content/Upload/Content/2026100118010001_Con_20261001182606_2.png" alt="솔루션디 자동차 장기렌트 & 리스 AI 비교견적 안내 2" loading="lazy" />
+      </a>
+      <a href="https://iryan.kr/t8g80y76dh" referrerpolicy="unsafe-url">
+        <img src="https://img.tenping.kr/Content/Upload/Content/2026100118010001_Con_20261001182606_3.png" alt="솔루션디 자동차 장기렌트 & 리스 AI 비교견적 안내 3" loading="lazy" />
+      </a>
+    </div>
+
+    <a class="cta-btn" href="https://iryan.kr/t8g80y76dh" referrerpolicy="unsafe-url">
+      🚗 <span class="highlight">솔루션디 공식 AI 견적 계산기</span> 및 전문 상담 바로가기 →
+    </a>
+
+    <footer>
+      광고주 상호명: 솔루션디 오토모빌 (사업자등록번호: 555-54-00347 | 경기도 화성시 동탄대로 636-1)<br/>
+      홍보 채널: 카피바라-감튀 (@capybara_gamtwi) | 본 페이지는 공정거래위원회 표시·광고 심사지침(2024.12.01 시행)을 준수합니다.<br/>
+      <span class="stats-toggle" onclick="toggleStats()">[📊 플랫폼별 유입 카운터 보기]</span>
+    </footer>
+  </div>
+
+  <script>
+    (function() {
+      const NAMESPACE = 'kr-benefit-lab-solutiond';
+      const VALID_SOURCES = ['yt', 'x', 'th', 'ig', 'fb', 'gads', 'direct'];
+      const params = new URLSearchParams(window.location.search);
+      const rawSrc = (params.get('src') || params.get('utm_source') || 'direct').toLowerCase().trim();
+      const src = VALID_SOURCES.includes(rawSrc) ? rawSrc : 'direct';
+      const showStats = params.get('stats') === '1';
+
+      const badge = document.getElementById('current-src-badge');
+      if (badge) badge.textContent = '현재 유입 파라미터: ?src=' + src;
+
+      if (!showStats) {
+        const sessionKey = 'counted_' + NAMESPACE + '_' + src;
+        if (!sessionStorage.getItem(sessionKey)) {
+          sessionStorage.setItem(sessionKey, '1');
+          fetch('https://abacus.jasoncameron.dev/hit/' + NAMESPACE + '/' + src).catch(() => {});
+          fetch('https://abacus.jasoncameron.dev/hit/' + NAMESPACE + '/total').catch(() => {});
+        }
+      }
+
+      async function loadAllCounts() {
+        const keys = [...VALID_SOURCES, 'total'];
+        await Promise.all(keys.map(async (k) => {
+          try {
+            const res = await fetch('https://abacus.jasoncameron.dev/get/' + NAMESPACE + '/' + k);
+            if (res.ok) {
+              const data = await res.json();
+              const el = document.getElementById('cnt-' + k);
+              if (el) el.textContent = (data && typeof data.value === 'number') ? data.value.toLocaleString() : '0';
+            } else {
+              const el = document.getElementById('cnt-' + k);
+              if (el) el.textContent = '0';
+            }
+          } catch (e) {
+            const el = document.getElementById('cnt-' + k);
+            if (el) el.textContent = '0';
+          }
+        }));
+      }
+
+      window.toggleStats = function() {
+        const panel = document.getElementById('stats-panel');
+        if (!panel) return;
+        panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+        if (panel.style.display === 'block') loadAllCounts();
+      };
+
+      if (showStats) {
+        const panel = document.getElementById('stats-panel');
+        if (panel) panel.style.display = 'block';
+        loadAllCounts();
+      }
+    })();
+  </script>
+</body>
+</html>
