@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!-- 애드릭스(Adlix) 유입경로(Referer) 통계에 ?src=yt, ?src=x, ?src=th, ?src=ig, ?src=gads 전체 URL이 전달되도록 설정 -->
+  <meta name="referrer" content="unsafe-url" />
   <title>[광고] 이사스토리 이사가격비교 무료 견적 신청 | 카피바라-감튀 생활혜택 연구소</title>
   <meta name="description" content="[광고] 이사스토리 비교견적으로 최고 20%까지 이사비용 절약! 내 주변 우수 이사업체 최대 3곳 무료 비교견적 신청하기." />
   <meta property="og:type" content="website" />
@@ -43,6 +45,47 @@
       max-width: 780px;
       margin: 0 auto;
       padding: 14px 12px 40px;
+    }
+    /* 실시간 플랫폼별 유입 카운터 대시보드 (?stats=1 접속 또는 푸터 버튼 클릭 시 노출) */
+    #stats-panel {
+      display: none;
+      background: #0f172a;
+      color: #f8fafc;
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 16px;
+      border: 2px solid #38bdf8;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    }
+    #stats-panel h2 {
+      font-size: 16px;
+      color: #38bdf8;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 8px;
+    }
+    .stat-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+    .stat-card .label {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+    .stat-card .val {
+      font-size: 20px;
+      font-weight: 800;
+      color: #facc15;
     }
     .header-card {
       background: var(--card);
@@ -153,6 +196,14 @@
       padding: 12px;
       border-top: 1px solid var(--border);
     }
+    .stats-toggle {
+      display: inline-block;
+      margin-top: 6px;
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 11px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -162,6 +213,23 @@
   </div>
 
   <div class="container">
+    <!-- 플랫폼별 유입 카운터 패널 (?stats=1 접속 시 또는 하단 버튼 클릭 시 표시) -->
+    <div id="stats-panel">
+      <h2>
+        <span>📊 플랫폼별 실시간 유입 카운터 (isastory)</span>
+        <span id="current-src-badge" style="font-size:12px;background:#334155;padding:3px 8px;border-radius:6px;color:#e2e8f0;"></span>
+      </h2>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="label">YouTube (yt)</div><div class="val" id="cnt-yt">-</div></div>
+        <div class="stat-card"><div class="label">X / 트위터 (x)</div><div class="val" id="cnt-x">-</div></div>
+        <div class="stat-card"><div class="label">Threads (th)</div><div class="val" id="cnt-th">-</div></div>
+        <div class="stat-card"><div class="label">Instagram (ig)</div><div class="val" id="cnt-ig">-</div></div>
+        <div class="stat-card"><div class="label">Google Ads (gads)</div><div class="val" id="cnt-gads">-</div></div>
+        <div class="stat-card"><div class="label">직접/기타 (direct)</div><div class="val" id="cnt-direct">-</div></div>
+        <div class="stat-card" style="border-color:#facc15;"><div class="label">총 누적 유입</div><div class="val" id="cnt-total">-</div></div>
+      </div>
+    </div>
+
     <div class="header-card">
       <span class="badge">이사스토리(주) 공식 비교견적 캠페인</span>
       <h1>이사스토리 무료 이사가격비교 (최고 20% 절약)</h1>
@@ -195,7 +263,7 @@
         👇 아래 입력폼에서 30초 무료 견적 바로 신청하기
       </a>
       <p class="direct-sub">
-        인앱 브라우저에서 아래 입력폼이 보이지 않는 경우 <a href="https://appu.kr/?i=12540464" target="_blank" rel="noopener noreferrer" style="color:#d9381e;font-weight:700;text-decoration:underline;">여기를 눌러 전용 접수창으로 이동</a>하세요.
+        인앱 브라우저에서 아래 입력폼이 보이지 않는 경우 <a id="fallback-link" href="https://appu.kr/?i=12540464" target="_blank" rel="noopener" referrerpolicy="unsafe-url" style="color:#d9381e;font-weight:700;text-decoration:underline;">여기를 눌러 전용 접수창으로 이동</a>하세요.
       </p>
     </div>
 
@@ -205,6 +273,7 @@
         id="adwriteform"
         name="adwriteform"
         src="https://appu.kr/?i=12540464&t=o"
+        referrerpolicy="unsafe-url"
         width="100%"
         height="5800"
         frameborder="0"
@@ -217,8 +286,70 @@
 
     <footer>
       광고주 상호명: 이사스토리(주) | 홍보 채널: 카피바라-감튀 (@capybara_gamtwi)<br/>
-      본 페이지는 공정거래위원회 표시·광고 심사지침(2024.12.01 시행)을 준수합니다.
+      본 페이지는 공정거래위원회 표시·광고 심사지침(2024.12.01 시행)을 준수합니다.<br/>
+      <span class="stats-toggle" onclick="toggleStats()">[📊 플랫폼별 유입 카운터 보기]</span>
     </footer>
   </div>
+
+  <script>
+    (function() {
+      const NAMESPACE = 'kr-benefit-lab-isastory';
+      const VALID_SOURCES = ['yt', 'x', 'th', 'ig', 'gads', 'direct'];
+      const params = new URLSearchParams(window.location.search);
+      const rawSrc = (params.get('src') || params.get('utm_source') || 'direct').toLowerCase().trim();
+      const src = VALID_SOURCES.includes(rawSrc) ? rawSrc : 'direct';
+      const showStats = params.get('stats') === '1';
+
+      const badge = document.getElementById('current-src-badge');
+      if (badge) badge.textContent = '현재 유입 파라미터: ?src=' + src;
+
+      // stats=1 모드가 아닐 때만 실제 방문 카운트 +1 증가 (중복 새로고침 방지를 위해 sessionStorage 체크)
+      if (!showStats) {
+        const sessionKey = 'counted_' + NAMESPACE + '_' + src;
+        if (!sessionStorage.getItem(sessionKey)) {
+          sessionStorage.setItem(sessionKey, '1');
+          fetch('https://abacus.jasoncameron.dev/hit/' + NAMESPACE + '/' + src).catch(() => {});
+          fetch('https://abacus.jasoncameron.dev/hit/' + NAMESPACE + '/total').catch(() => {});
+        }
+      }
+
+      async function loadAllCounts() {
+        const keys = [...VALID_SOURCES, 'total'];
+        await Promise.all(keys.map(async (k) => {
+          try {
+            const res = await fetch('https://abacus.jasoncameron.dev/get/' + NAMESPACE + '/' + k);
+            if (res.ok) {
+              const data = await res.json();
+              const el = document.getElementById('cnt-' + k);
+              if (el) el.textContent = (data && typeof data.value === 'number') ? data.value.toLocaleString() : '0';
+            } else {
+              const el = document.getElementById('cnt-' + k);
+              if (el) el.textContent = '0';
+            }
+          } catch (e) {
+            const el = document.getElementById('cnt-' + k);
+            if (el) el.textContent = '0';
+          }
+        }));
+      }
+
+      window.toggleStats = function() {
+        const panel = document.getElementById('stats-panel');
+        if (!panel) return;
+        if (panel.style.display === 'block') {
+          panel.style.display = 'none';
+        } else {
+          panel.style.display = 'block';
+          loadAllCounts();
+        }
+      };
+
+      if (showStats) {
+        const panel = document.getElementById('stats-panel');
+        if (panel) panel.style.display = 'block';
+        loadAllCounts();
+      }
+    })();
+  </script>
 </body>
 </html>
