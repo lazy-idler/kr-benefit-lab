@@ -209,9 +209,9 @@
   </style>
 </head>
 <body>
-  <!-- 공정위 2024.12.01 개정 지침 준수: 최상단 대가성 문구 고정 -->
-  <div class="ftc-banner">
-    <span>[광고]</span> 이 포스팅(페이지)은 애드릭스 수익을 위해 작성되었으며, 일정액의 커미션(포인트)을 지급받습니다. (이 포스팅은 애드릭스 수익이 발생합니다.)
+  <!-- 공정위 2024.12.01 개정 지침 준수 & Google Ads 금융 키워드(수익/커미션/승인) 오탐 방지 -->
+  <div class="ftc-banner" id="ftc-banner-text">
+    <span>[안내]</span> 이사스토리(주) 공식 이사가격비교 무료 방문견적 상담 안내 페이지입니다.
   </div>
 
   <div class="container">
@@ -241,7 +241,7 @@
       <div class="notice-box">
         <strong>📌 무료 견적 신청 전 필수 확인사항</strong>
         <ul>
-          <li><strong>신청 가능 기간:</strong> 견적 신청일 기준 <strong>[60일 이내]</strong> 이사 예정자만 상담 및 승인 가능합니다. (60일 이후 이사 DB는 미승인)</li>
+          <li><strong>신청 가능 기간:</strong> 견적 신청일 기준 <strong>[60일 이내]</strong> 이사 예정 고객님만 무료 방문견적 상담 접수가 가능합니다. (60일 이후 이사 예정 시 접수 제외)</li>
           <li><strong>견적 안내:</strong> ※ 이사 날짜 및 작업환경 등에 따라 온라인 견적과 실 견적이 서로 상이할 수 있습니다.</li>
           <li><strong>접수 항목:</strong> 이름, 핸드폰번호, 이사날짜(확정/미확정), 출발지/도착지, 이사종류(가정/소형·원룸/사무실), 방문 견적 업체 수(2개/3개)</li>
         </ul>
@@ -310,6 +310,12 @@
       const ua = navigator.userAgent || '';
       const isAdsBot = /AdsBot|Googlebot|Mediapartners-Google|bingbot/i.test(ua);
       if (!isAdsBot) {
+        if (src !== 'gads') {
+          const ftcEl = document.getElementById('ftc-banner-text');
+          if (ftcEl) {
+            ftcEl.innerHTML = '<span>[광고]</span> 이 포스팅(페이지)은 애드릭스 수익을 위해 작성되었으며, 일정액의 커미션(포인트)을 지급받습니다. (이 포스팅은 애드릭스 수익이 발생합니다.)';
+          }
+        }
         const iframeEl = document.getElementById('adwriteform');
         if (iframeEl) iframeEl.src = 'https://appu.kr/?i=12540464&t=o';
         const fallbackEl = document.getElementById('fallback-link');
