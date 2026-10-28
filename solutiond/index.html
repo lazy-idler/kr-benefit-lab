@@ -211,6 +211,8 @@
         <div class="stat-card"><div class="label">Threads (th)</div><div class="val" id="cnt-th">-</div></div>
         <div class="stat-card"><div class="label">Instagram (ig)</div><div class="val" id="cnt-ig">-</div></div>
         <div class="stat-card"><div class="label">Facebook (fb)</div><div class="val" id="cnt-fb">-</div></div>
+        <div class="stat-card"><div class="label">Naver Clip (nclip)</div><div class="val" id="cnt-nclip">-</div></div>
+        <div class="stat-card"><div class="label">TikTok (tt)</div><div class="val" id="cnt-tt">-</div></div>
         <div class="stat-card"><div class="label">Google Ads (gads)</div><div class="val" id="cnt-gads">-</div></div>
         <div class="stat-card"><div class="label">직접/기타 (direct)</div><div class="val" id="cnt-direct">-</div></div>
         <div class="stat-card" style="border-color:#facc15;"><div class="label">총 누적 유입</div><div class="val" id="cnt-total">-</div></div>
@@ -264,7 +266,7 @@
   <script>
     (function() {
       const NAMESPACE = 'kr-benefit-lab-solutiond';
-      const VALID_SOURCES = ['yt', 'x', 'th', 'ig', 'fb', 'nclip', 'gads', 'direct'];
+      const VALID_SOURCES = ['yt', 'x', 'th', 'ig', 'fb', 'nclip', 'tt', 'gads', 'direct'];
       const params = new URLSearchParams(window.location.search);
       const rawSrc = (params.get('src') || params.get('utm_source') || 'direct').toLowerCase().trim();
       const src = VALID_SOURCES.includes(rawSrc) ? rawSrc : 'direct';

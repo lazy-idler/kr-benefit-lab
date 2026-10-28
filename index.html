@@ -185,7 +185,7 @@
 </head>
 <body>
   <div class="ftc-banner">
-    [광고] 본 페이지의 링크들은 애드릭스·텐핑 등 제휴 마케팅 활동을 통해 제공되며, 이용 시 일정액의 수수료를 지급받습니다.
+    [광고] 본 게시글의 링크를 통해 구매 및 캠페인 참여 시 수수료를 제공받습니다. (애드릭스·텐핑 제휴)
   </div>
 
   <div class="container">
@@ -197,6 +197,8 @@
         <div class="stat-box"><div class="stat-label">Threads (th)</div><div class="stat-val" id="cnt-th">-</div></div>
         <div class="stat-box"><div class="stat-label">Instagram (ig)</div><div class="stat-val" id="cnt-ig">-</div></div>
         <div class="stat-box"><div class="stat-label">Facebook (fb)</div><div class="stat-val" id="cnt-fb">-</div></div>
+        <div class="stat-box"><div class="stat-label">Naver Clip (nclip)</div><div class="stat-val" id="cnt-nclip">-</div></div>
+        <div class="stat-box"><div class="stat-label">TikTok (tt)</div><div class="stat-val" id="cnt-tt">-</div></div>
         <div class="stat-box"><div class="stat-label">Google Ads</div><div class="stat-val" id="cnt-gads">-</div></div>
         <div class="stat-box"><div class="stat-label">Direct</div><div class="stat-val" id="cnt-direct">-</div></div>
         <div class="stat-box"><div class="stat-label">총 누적 유입</div><div class="stat-val" id="cnt-total">-</div></div>
@@ -275,6 +277,29 @@
       </a>
     </div>
 
+    <div class="section-title">🛒 평소처럼 장만 봐도 끝! 공식 제휴 쇼핑몰 바로가기</div>
+    <div class="card-list">
+      <a class="link-card" href="https://iryan.kr/t8g82itukj" referrerpolicy="unsafe-url">
+        <div class="num-badge">7번</div>
+        <div class="card-body">
+          <span class="card-tag">🚀 쿠팡 로켓배송 · 골드박스 오늘의 특가</span>
+          <div class="card-title">쿠팡(Coupang) 공식 쇼핑 바로가기</div>
+          <div class="card-sub">위 링크를 경유해 평소처럼 필요한 생필품·식품을 장보실 수 있습니다 (구매 시 수수료 제공)</div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <a class="link-card" href="https://iryan.kr/t8g82itukk" referrerpolicy="unsafe-url">
+        <div class="num-badge">8번</div>
+        <div class="card-body">
+          <span class="card-tag">🌏 알리익스프레스 · 초특가 직구 & 무료배송</span>
+          <div class="card-title">알리익스프레스(AliExpress) 특가 쇼핑 바로가기</div>
+          <div class="card-sub">가성비 아이디어 생활용품·가전 특가 모음 바로가기 (구매 시 수수료 제공)</div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+    </div>
+
     <footer>
       홍보 채널: 카피바라-감튀 (@capybara_gamtwi) | 공정거래위원회 표시·광고 심사지침(2024.12.01 시행) 준수
       <span class="stats-toggle" onclick="toggleStats()">[📊 통합 유입 카운터 보기]</span>
@@ -284,7 +309,7 @@
   <script>
     (function() {
       const NAMESPACE = 'kr-benefit-lab-hub';
-      const VALID_SOURCES = ['yt', 'x', 'th', 'ig', 'fb', 'nclip', 'gads', 'direct'];
+      const VALID_SOURCES = ['yt', 'x', 'th', 'ig', 'fb', 'nclip', 'tt', 'gads', 'direct'];
       const params = new URLSearchParams(window.location.search);
       const rawSrc = (params.get('src') || params.get('utm_source') || 'direct').toLowerCase().trim();
       const src = VALID_SOURCES.includes(rawSrc) ? rawSrc : 'direct';

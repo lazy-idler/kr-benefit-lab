@@ -204,7 +204,7 @@
 </head>
 <body>
   <div class="ftc-banner">
-    [광고] 이 페이지는 텐핑(Tenping) 소문내기 활동을 통해 작성되었으며, 이에 따른 일정액의 수수료(포인트)를 지급받습니다.
+    [광고] 본 게시글의 링크를 통해 구매 및 캠페인 참여 시 수수료를 제공받습니다. (텐핑 제휴)
   </div>
 
   <div class="container">
@@ -216,6 +216,8 @@
         <div class="stat-box"><div class="stat-label">Threads (th)</div><div class="stat-val" id="cnt-th">-</div></div>
         <div class="stat-box"><div class="stat-label">Instagram (ig)</div><div class="stat-val" id="cnt-ig">-</div></div>
         <div class="stat-box"><div class="stat-label">Facebook (fb)</div><div class="stat-val" id="cnt-fb">-</div></div>
+        <div class="stat-box"><div class="stat-label">Naver Clip (nclip)</div><div class="stat-val" id="cnt-nclip">-</div></div>
+        <div class="stat-box"><div class="stat-label">TikTok (tt)</div><div class="stat-val" id="cnt-tt">-</div></div>
         <div class="stat-box"><div class="stat-label">Google Ads</div><div class="stat-val" id="cnt-gads">-</div></div>
         <div class="stat-box"><div class="stat-label">Direct</div><div class="stat-val" id="cnt-direct">-</div></div>
         <div class="stat-box"><div class="stat-label">총 누적 유입</div><div class="stat-val" id="cnt-total">-</div></div>
@@ -270,6 +272,21 @@
       📱 라쿠텐 인사이트 공식 무료 가입 바로가기 →
     </a>
 
+    <div class="secret-tip-card" style="margin-top: 16px; border-color: #38bdf8; background: linear-gradient(145deg, #0f172a, #1e293b);">
+      <div class="secret-tip-title" style="color: #38bdf8;">🛒 오늘 쿠팡·알리 장볼 예정이시라면? (제휴 특가 바로가기)</div>
+      <div class="secret-step" style="font-size: 13px; color: #cbd5e1;">
+        아래 공식 제휴 링크로 접속해 평소처럼 생필품·로켓배송 장을 보시면 별도 추가 비용 없이 똑같은 혜택가로 쇼핑하실 수 있습니다. (본 게시글의 링크를 통해 구매 시 수수료를 제공받습니다.)
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+        <a class="hub-link" href="https://iryan.kr/t8g82itukj" referrerpolicy="unsafe-url" style="margin-top:0; background:#dc2626; color:#fff; border-color:#ef4444;">
+          🚀 쿠팡 로켓배송 바로가기
+        </a>
+        <a class="hub-link" href="https://iryan.kr/t8g82itukk" referrerpolicy="unsafe-url" style="margin-top:0; background:#ea580c; color:#fff; border-color:#f97316;">
+          🌏 알리익스프레스 특가
+        </a>
+      </div>
+    </div>
+
     <a class="hub-link" id="back-to-hub" href="../">
       🏠 카피바라-감튀 전체 생활혜택 & 무료 이벤트 번호판 보러가기
     </a>
@@ -284,7 +301,7 @@
   <script>
     (function() {
       const NAMESPACE = 'kr-benefit-lab-rakuten';
-      const VALID_SOURCES = ['yt', 'x', 'th', 'ig', 'fb', 'nclip', 'gads', 'direct'];
+      const VALID_SOURCES = ['yt', 'x', 'th', 'ig', 'fb', 'nclip', 'tt', 'gads', 'direct'];
       const params = new URLSearchParams(window.location.search);
       const rawSrc = (params.get('src') || params.get('utm_source') || 'direct').toLowerCase().trim();
       const src = VALID_SOURCES.includes(rawSrc) ? rawSrc : 'direct';
