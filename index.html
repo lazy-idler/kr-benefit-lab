@@ -284,10 +284,11 @@
   <script>
     (function() {
       const NAMESPACE = 'kr-benefit-lab-hub';
-      const VALID_SOURCES = ['yt', 'x', 'th', 'ig', 'fb', 'gads', 'direct'];
+      const VALID_SOURCES = ['yt', 'x', 'th', 'ig', 'fb', 'nclip', 'gads', 'direct'];
       const params = new URLSearchParams(window.location.search);
       const rawSrc = (params.get('src') || params.get('utm_source') || 'direct').toLowerCase().trim();
       const src = VALID_SOURCES.includes(rawSrc) ? rawSrc : 'direct';
+      const abacusKey = (src === 'gads' || src === 'direct') ? src : ('src_' + src);
       const showStats = params.get('stats') === '1';
 
       // Preserve ?src= parameter when clicking internal campaign cards
@@ -302,7 +303,7 @@
         const sessionKey = 'counted_' + NAMESPACE + '_' + src;
         if (!sessionStorage.getItem(sessionKey)) {
           sessionStorage.setItem(sessionKey, '1');
-          fetch('https://abacus.jasoncameron.dev/hit/' + NAMESPACE + '/' + src).catch(() => {});
+          fetch('https://abacus.jasoncameron.dev/hit/' + NAMESPACE + '/' + abacusKey).catch(() => {});
           fetch('https://abacus.jasoncameron.dev/hit/' + NAMESPACE + '/total').catch(() => {});
         }
       }
@@ -311,7 +312,8 @@
         const keys = [...VALID_SOURCES, 'total'];
         await Promise.all(keys.map(async (k) => {
           try {
-            const res = await fetch('https://abacus.jasoncameron.dev/get/' + NAMESPACE + '/' + k);
+            const ak = (k === 'total' || k === 'gads' || k === 'direct') ? k : ('src_' + k);
+            const res = await fetch('https://abacus.jasoncameron.dev/get/' + NAMESPACE + '/' + ak);
             const data = res.ok ? await res.json() : { value: 0 };
             const el = document.getElementById('cnt-' + k);
             if (el) el.textContent = (data && typeof data.value === 'number') ? data.value.toLocaleString() : '0';
